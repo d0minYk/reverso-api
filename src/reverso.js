@@ -259,7 +259,7 @@ module.exports = class Reverso {
                 const text_to_voice = Buffer.from(response.data.translation[0]).toString('base64');
                 const condition = voices[to_language] != undefined && response.data.translation[0].length <= 150;
                 
-                if (response.data?.contextResults?.results) {
+                if (response.data && response.data.contextResults && response.data.contextResults.results) {
                     const context_examples = [];
 
                     const source_examples = response.data.contextResults.results[0].sourceExamples;
