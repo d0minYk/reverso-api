@@ -30,8 +30,8 @@ module.exports = class Reverso {
             const from_language = from.toLowerCase();
             const to_language = to.toLowerCase();
 
-            const is_correct_language = await checkLanguage('context', from_language, to_language).catch(err => err);
-            if (is_correct_language?.error) return reject({ method: 'getContext', ...is_correct_language });
+            // const is_correct_language = await checkLanguage('context', from_language, to_language).catch(err => err);
+            // if (is_correct_language?.error) return reject({ method: 'getContext', ...is_correct_language });
             
             axios({
                 method: 'GET',
