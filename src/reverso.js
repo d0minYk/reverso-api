@@ -30,8 +30,8 @@ module.exports = class Reverso {
             const from_language = from.toLowerCase();
             const to_language = to.toLowerCase();
 
-            // const is_correct_language = await checkLanguage('context', from_language, to_language).catch(err => err);
-            // if (is_correct_language?.error) return reject({ method: 'getContext', ...is_correct_language });
+            const is_correct_language = await checkLanguage('context', from_language, to_language).catch(err => err);
+            if (is_correct_language && is_correct_language.error) reject({ method: 'getContext', error: "unsuported language" });
             
             axios({
                 method: 'GET',
@@ -98,8 +98,8 @@ module.exports = class Reverso {
         return new Promise(async (resolve, reject) => {
             const from_language = from.toLowerCase();
 
-            // const is_correct_language = await checkLanguage('spell', from_language).catch(err => err);
-            // if (is_correct_language?.error) return reject({ method: 'getSpellCheck', ...is_correct_language });
+            const is_correct_language = await checkLanguage('spell', from_language).catch(err => err);
+            if (is_correct_language && is_correct_language.error) reject({ method: 'getContext', error: "unsuported language" });
 
             const languages = {
                 english: 'eng',
@@ -151,8 +151,8 @@ module.exports = class Reverso {
         return new Promise(async (resolve, reject) => {
             const from_language = from.toLowerCase();
 
-            // const is_correct_language = await checkLanguage('synonym', from_language).catch(err => err);
-            // if (is_correct_language?.error) return reject({ method: 'getSynonyms', ...is_correct_language });
+            const is_correct_language = await checkLanguage('synonym', from_language).catch(err => err);
+            if (is_correct_language && is_correct_language.error) reject({ method: 'getContext', error: "unsuported language" });
 
             const languages = {
                 english: 'en',
@@ -215,9 +215,9 @@ module.exports = class Reverso {
             const from_language = from.toLowerCase();
             const to_language = to.toLowerCase();
 
-            // const is_correct_language = await checkLanguage('translation', from_language, to_language).catch(err => err);
-            // if (is_correct_language?.error) return reject({ method: 'getTranslation', ...is_correct_language });
-
+            const is_correct_language = await checkLanguage('translation', from_language, to_language).catch(err => err);
+            if (is_correct_language && is_correct_language.error) reject({ method: 'getContext', error: "unsuported language" });
+            
             const languages = {
                 arabic: 'ara', german: 'ger', spanish: 'spa', 
                 french: 'fra', hebrew: 'heb', italian: 'ita', 
